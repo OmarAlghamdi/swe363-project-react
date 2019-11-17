@@ -7,6 +7,8 @@ import SignUp from './components/Signup';
 import History from './components/History';
 import Feedback from './components/Feedback';
 import NewEvent from './components/NewEvent';
+import Profile from './components/Profile';
+import Users from './components/Users';
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
         <Route path='/history' component={History} />
         <Route path='/feedback' component={Feedback} />
         <Route path='/new-event' component={NewEvent} />
+        <Route path='/profile' component={Profile} /> \
+        <Route path='/users' component={Users} /> \
       </Switch>
     </Router>
   );
