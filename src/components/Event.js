@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Card, CardActionArea, CardActions, CardMedia, CardContent, Typography, Button } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 import football from '../assets/football.jfif'
 
 class Event extends Component {
@@ -10,6 +11,7 @@ class Event extends Component {
 
     }
     getControl(source) {
+
         if (source === 'home') {
             return (
                 <Button size="small" color="primary">
@@ -23,9 +25,11 @@ class Event extends Component {
                     <Button size="small" color="primary">
                         Cancel
                     </Button>
+                    <Link to='/feedback' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
                     <Button size="small" color="primary">
                         Send Feedback
                     </Button>
+                    </Link>
                 </Fragment>
             )
         }
