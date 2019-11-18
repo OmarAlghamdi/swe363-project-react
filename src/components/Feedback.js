@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
     '@global': {
@@ -65,15 +66,21 @@ export default function Feedback() {
                         >
                             Submit
           </Button>
-                        <Button
+                        <Link to='history' style={{
+                            fontFamily: 'inherit', textDecoration: 'inherit',
+                            width: '40%'
+                        }}>
+                            <Button
                             type="cancel"
-                            style={{ width: '40%' }}
+                            style={{ width: '100%' }}
                             variant="contained"
                             color="secondary"
                             className={classes.submit}
-                        >
-                            Cancel
-          </Button>
+                            >
+                                Cancel
+                          </Button>
+                        </Link>
+                        
                     </Grid>
                 </form>
             </div>
