@@ -39,14 +39,19 @@ class Event extends Component {
         else if (source === 'history' && owner === 'true') {
             return (
                 <Fragment>
+                    <Link to='accept' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
+                        <Button size="small" color="primary">
+                            Accept/Reject
+                        </Button>
+                    </Link>
+                    <Link to='edit-event' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
                     <Button size="small" color="primary">
                         Edit
                     </Button>
-                    <Link to='/feedback' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
+                    </Link>
                     <Button size="small" color="secondary">
                         Delete
                     </Button>
-                    </Link>
                 </Fragment>
             )
         }

@@ -6,7 +6,7 @@ import SignIn from './components/Signin-c'
 import SignUp from './components/Signup-c'
 import History from './components/History'
 import Feedback from './components/Feedback'
-import NewEvent from './components/NewEvent'
+import NewEvent from './components/NewEvent-c'
 import Profile from './components/Profile'
 import Users from './components/Users'
 import Forgot from './components/Forgot'
@@ -44,6 +44,9 @@ class App extends Component {
           </Route>
           <Route path='/feedback' component={Feedback} />
           <Route path='/new-event' component={NewEvent} />
+          <Route path='/edit-event'>
+            <NewEvent mode='edit' />
+          </Route>
           <Route path='/profile' component={Profile} /> 
           <Route path='/users' component={Users} /> 
           <Route path='/reset-password' component={Forgot} /> 
