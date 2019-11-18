@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './components/Home'
 import SignIn from './components/Signin-c'
-import SignUp from './components/Signup'
+import SignUp from './components/Signup-c'
 import History from './components/History'
 import Feedback from './components/Feedback'
 import NewEvent from './components/NewEvent'
@@ -22,14 +22,8 @@ class App extends Component {
     }
   }
 
-  getUsers() {
-    return userList
-  }
   getEvents() {
     return eventList
-  }
-  signin(user) {
-    this.setState({ signedUser: {user}})
   }
 
   render() {
@@ -41,10 +35,7 @@ class App extends Component {
             <Home events={this.state.events} />
           </Route>
           <Route path='/signin'>
-            <SignIn
-              setUser={this.signin.bind(this)}
-              getUSers={this.getUsers}
-            />
+            <SignIn/>
           </Route>
           <Route path='/signup' component={SignUp} />
           <Route path='/history' >

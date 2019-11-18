@@ -39,14 +39,26 @@ const styles = theme => ({
     },
 });
   
-  
-  
 
 class SignIn extends Component{
     constructor(props) {
         super(props)
-    }
+        this.state = {
+            email: '', 
+            password: ''
+        }
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
 
+    }
+    handleSubmit(e) {
+        e.preventDefault()
+    }
+    handleChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
     render() {
         const { classes } = this.props
         return (
@@ -59,17 +71,21 @@ class SignIn extends Component{
                 <Typography component="h1" variant="h5">
                     Sign in
         </Typography>
-                <form className={classes.form} noValidate>
+                    <form className={classes.form} noValidate
+                        onSubmit={this.handleSubmit}
+                    >
                     <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
-                        autoFocus
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            autoComplete="email"
+                            autoFocus
+                            value={this.state.email}
+                            onChange={this.handleChange}
                     />
                     <TextField
                         variant="outlined"
@@ -81,17 +97,20 @@ class SignIn extends Component{
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
                     />
-                    <FormControlLabel
+                    {/* <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
+                    /> */}
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                            
                     >
                         Sign In
           </Button>
