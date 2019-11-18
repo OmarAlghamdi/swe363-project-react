@@ -9,6 +9,7 @@ import Feedback from './components/Feedback'
 import NewEvent from './components/NewEvent'
 import Profile from './components/Profile'
 import Users from './components/Users'
+import Forgot from './components/Forgot'
 
 import { users as userList, events as eventList } from './datastore'
 
@@ -45,6 +46,7 @@ class App extends Component {
           <Route path='/new-event' component={NewEvent} />
           <Route path='/profile' component={Profile} /> 
           <Route path='/users' component={Users} /> 
+          <Route path='/reset-password' component={Forgot} /> 
         </Switch>
       </Router>
     )

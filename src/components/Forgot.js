@@ -40,12 +40,11 @@ const styles = theme => ({
 });
   
 
-class SignIn extends Component{
+class Forgot extends Component{
     constructor(props) {
         super(props)
         this.state = {
             email: '', 
-            password: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -68,8 +67,8 @@ class SignIn extends Component{
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign in
+                <Typography component="h1" variant="h6">
+                    Enter your email to rest your password
         </Typography>
                     <form className={classes.form} noValidate
                         onSubmit={this.handleSubmit}
@@ -87,23 +86,7 @@ class SignIn extends Component{
                             value={this.state.email}
                             onChange={this.handleChange}
                     />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        autoComplete="current-password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                    />
-                    {/* <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    /> */}
+                    
                         <Button
                             type="submit"
                             fullWidth
@@ -112,25 +95,9 @@ class SignIn extends Component{
                             className={classes.submit}
                             
                     >
-                        Sign In
+                        Rest Password
           </Button>
-                    <Grid container>
-                            <Grid item xs>
-                            <RouterLink to='/reset-password' style={{color: 'inherit', fontFamily: 'inherit', textDecoration: 'inherit'}}>
-                                <Link href="#" variant="body2">
-                                     Forgot password?
-                                </Link>
-                            </RouterLink>
-                        </Grid>
-                        <Grid item>
-                            <RouterLink to='/signup' style={{color: 'inherit', fontFamily: 'inherit', textDecoration: 'inherit'}}>
-                                <Link href="#" variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </RouterLink>
-
-                        </Grid>
-                    </Grid>
+                    
                 </form>
             </div>
             
@@ -141,4 +108,4 @@ class SignIn extends Component{
 
 
 
-export default withStyles(styles, {withTheme: true})(SignIn)
+export default withStyles(styles, {withTheme: true})(Forgot)
