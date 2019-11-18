@@ -10,9 +10,10 @@ class Event extends Component {
         this.status = props.status
         this.name = props.name
         this.desc = props.desc
+        this.owner = props.owner
 
     }
-    getControl(source) {
+    getControl(source, owner) {
 
         if (source === 'home') {
             return (
@@ -21,7 +22,7 @@ class Event extends Component {
                 </Button>
             )
         }
-        else if (source === 'history') {
+        else if (source === 'history' && owner !== 'true') {
             return (
                 <Fragment>
                     <Button size="small" color="primary">
@@ -35,9 +36,23 @@ class Event extends Component {
                 </Fragment>
             )
         }
+        else if (source === 'history' && owner === 'true') {
+            return (
+                <Fragment>
+                    <Button size="small" color="primary">
+                        Edit
+                    </Button>
+                    <Link to='/feedback' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
+                    <Button size="small" color="secondary">
+                        Delete
+                    </Button>
+                    </Link>
+                </Fragment>
+            )
+        }
     }
-    getStatus(source) {
-        if (source === 'history') {
+    getStatus(source, owner) {
+        if (source === 'history' && owner !== 'true') {
             return (
                 <Typography
                     variant="overline" color="secondary" component="p"
@@ -66,9 +81,9 @@ class Event extends Component {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    {this.getControl(this.source)}
+                    {this.getControl(this.source, this.owner)}
                 </CardActions>
-                {this.getStatus(this.source)}
+                {this.getStatus(this.source, this.owner)}
             </Card>
         )
     }
