@@ -1,3 +1,6 @@
+export { users }
+export { events }
+
 const users = [
     {
     firstName: 'Omar',

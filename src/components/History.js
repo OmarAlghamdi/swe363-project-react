@@ -4,32 +4,27 @@ import Event from './Event'
 import { Grid } from '@material-ui/core'
 
 class History extends Component{
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+        this.events = props.events
+    }
+    getStatus() {
+        return 'waiting'
     }
     render() {
         return (
             <div>
                 <Search />
                 <Grid container spacing={1}>
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Event source='history' status='waiting'/>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Event source='history' status='waiting'/>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Event source='history' status='waiting'/>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Event source='history' status='waiting'/>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Event source='history' status='waiting'/>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Event source='history' status='waiting'/>
-                    </Grid>
+                {this.events.map(event => (
+                        <Grid item xs={12} md={6} lg={3}>
+                            <Event source='history'
+                                name={event.name}
+                                desc={event.desc}
+                                status={this.getStatus}
+                            />
+                        </Grid>
+                    ))}
                 </Grid>
             </div>
         )

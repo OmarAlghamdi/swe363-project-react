@@ -4,32 +4,23 @@ import Event from './Event'
 import { Grid } from '@material-ui/core'
 
 class Home extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+        this.events = props.events
     }
     render() {
         return (
             <div>
                 <Search />
                 <Grid container spacing={1}>
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Event source='home'/>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Event source='home'/>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Event source='home'/>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Event source='home'/>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Event source='home'/>
-                    </Grid>
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Event source='home'/>
-                    </Grid>
+                {this.events.map(event => (
+                        <Grid item xs={12} md={6} lg={3}>
+                            <Event source='home'
+                                name={event.name}
+                                desc={event.desc}
+                            />
+                        </Grid>
+                    ))}
                 </Grid>
             </div>
         )

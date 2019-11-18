@@ -8,6 +8,8 @@ class Event extends Component {
         super()
         this.source = props.source
         this.status = props.status
+        this.name = props.name
+        this.desc = props.desc
 
     }
     getControl(source) {
@@ -56,10 +58,10 @@ class Event extends Component {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                            event name
+                            {this.name}
               </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                            event description
+                            {this.desc}
               </Typography>
                     </CardContent>
                 </CardActionArea>
