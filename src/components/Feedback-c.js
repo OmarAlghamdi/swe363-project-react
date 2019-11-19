@@ -34,6 +34,22 @@ class Feedback extends Component{
         super(props)
         this.mode = props.mode
     }
+    getMode() {
+        if (this.mode === 'reply') {
+            return 'Reply'
+        }
+        else {
+            return 'Feedback'
+        }
+    }
+    getHint() {
+        if (this.mode === 'reply') {
+            return 'Your Reply'
+        }
+        else {
+            return 'Your Feedback'
+        }
+    }
     render() {
         const { classes } = this.props
         return (
@@ -42,7 +58,7 @@ class Feedback extends Component{
             <div className={classes.paper}>
 
                 <Typography component="h1" variant="h5">
-                    Feedback
+                    {this.getMode()}
         </Typography>
                 <form className={classes.form} noValidate>
                     <TextField
@@ -51,7 +67,7 @@ class Feedback extends Component{
                         required
                         fullWidth
                         id="feedback"
-                        label="Your Feedback"
+                        label={this.getHint()}
                         name="feedback"
                         autoFocus
                         multiline
@@ -70,7 +86,10 @@ class Feedback extends Component{
                         >
                             Submit
           </Button>
-                        <Link to='history' style={{
+                            <Link to={
+                                this.mode? 'feedbacks' : 'history'
+                            }
+                                style={{
                             fontFamily: 'inherit', textDecoration: 'inherit',
                             width: '40%'
                         }}>
