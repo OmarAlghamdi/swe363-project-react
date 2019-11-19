@@ -195,3 +195,24 @@ else
 
 Endif
 @enduml
+===================================
+@startuml
+title
+Send Feedback
+end title
+(*)  --> "view activity"
+if "[registered]"then
+--> [true] "send feedback"
+else
+-> [false] "request participation"
+Endif
+
+"send feedback" --> "fill details"
+If "[valid]" then
+--> [true] "submit"
+else
+---> [false] "fill details"
+Endif
+
+"submit" --> (*)
+@enduml
