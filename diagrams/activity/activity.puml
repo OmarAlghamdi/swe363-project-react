@@ -216,3 +216,21 @@ Endif
 
 "submit" --> (*)
 @enduml
+===================================
+@startuml
+title
+Update Profile
+end title
+(*)  --> "select update profile"
+"select update profile" --> "view profile details"
+"view profile details" --> "enter new values"
+
+If "[valid]" then
+--> [true] "submit"
+else
+---> [false] "enter new values"
+Endif
+
+"submit" --> "update profile"
+"update profile" --> (*)
+@enduml
