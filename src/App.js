@@ -10,6 +10,7 @@ import NewEvent from './components/NewEvent-c'
 import Profile from './components/Profile'
 import Users from './components/Users'
 import Forgot from './components/Forgot'
+import Accept from './components/Accept'
 
 import { users as userList, events as eventList } from './datastore'
 
@@ -18,13 +19,17 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      signedUser: '',
-      events: this.getEvents()
+      signedUser: 'omar@kfupm.com',
+      events: this.getEvents(),
+      users: this.getUsers()
     }
   }
 
   getEvents() {
     return eventList
+  }
+  getUsers() {
+    return userList
   }
 
   render() {
@@ -41,6 +46,13 @@ class App extends Component {
           <Route path='/signup' component={SignUp} />
           <Route path='/history' >
             <History events={this.state.events} />
+          </Route>
+          <Route path='/accept'>
+            <Accept event={
+              this.state.events.filter(event => (
+                event.creator === this.state.signedUser
+              ))
+            } users={this.state.users}/>
           </Route>
           <Route path='/feedback' component={Feedback} />
           <Route path='/new-event' component={NewEvent} />
