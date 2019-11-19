@@ -12,7 +12,7 @@ const users = [
     {
         firstName: 'Abdullah',
         lastName: 'Khayat',
-        email: 'abdullah@kfupm.com',
+        email: 'abdul@kfupm.com',
         password: 'abdul123',
         type: 'user'
     },
@@ -34,6 +34,7 @@ const users = [
 
 const events = [
     {
+        id: '1',
         name: 'football',
         desc: 'footbal in field 5',
         startDate: '20/11/2019',
@@ -41,11 +42,12 @@ const events = [
         endDate: '20/11/2019',
         endTime: '09:00pm',
         creator: 'omar@kfupm.com',
-        joined: [],
-        waiting: ['abdul@kfupm.com', 'mohd@kfupm.com'],
+        joined: ['abdul@kfupm.com'],
+        waiting: ['mohd@kfupm.com'],
         feedbacks: []
     },
     {
+        id: '2',
         name: 'baskerball',
         desc: 'basketball in building 11',
         startDate: '21/11/2019',
@@ -58,6 +60,7 @@ const events = [
         feedbacks: []
     },
     {
+        id: '3',
         name: 'football',
         desc: 'footbal in field 5',
         startDate: '22/11/2019',

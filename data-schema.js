@@ -10,6 +10,7 @@ const users = [
 
 const events = [
     {
+        id: '',
         name: '',
         desc: '',
         startDate: '',
