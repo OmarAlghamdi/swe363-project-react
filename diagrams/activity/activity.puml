@@ -83,20 +83,20 @@ title
 Accept/Reject Registration Request
 end title
 (*)  --> "recieve registration request"
-"recieve registration request" --> "view requests"
+"recieve registration request" --> "view registration requests"
 
 If "[request exists]" then
 --> [true] "choose request"
 
 If "" then
 --> "accept request"
-"accept request" --> "add to database"
-"add to database" --> (*3)
+"accept request" --> "add user to database"
+"add user to database" --> (*3)
 
 else
 -> "reject request"
-"reject request" -> "remove from database"
-"remove from database" -> (*2)
+"reject request" -> "remove user from database"
+"remove user from database" -> (*2)
 Endif
 
 else
