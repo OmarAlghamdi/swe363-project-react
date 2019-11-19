@@ -80,7 +80,7 @@ Endif
 ======================================
 @startuml
 title
-Accept/Reject Request
+Accept/Reject Registration Request
 end title
 (*)  --> "recieve registration request"
 "recieve registration request" --> "view requests"
