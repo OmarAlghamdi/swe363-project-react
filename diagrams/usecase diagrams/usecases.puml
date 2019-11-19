@@ -47,6 +47,7 @@ left to right direction
 :admin: --> (reject user)
 :admin: --> (delete user)
 :admin: --> (block user)
-:admin: --> (maintain activity)
+:admin: --> (accept activity)
+:admin: --> (reject activity)
 :admin: --> (generate report)
 @enduml
