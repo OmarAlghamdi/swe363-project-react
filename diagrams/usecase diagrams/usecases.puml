@@ -47,8 +47,6 @@ left to right direction
 :admin: --> (reject user)
 :admin: --> (delete user)
 :admin: --> (block user)
-:admin: --> (accept acitivity offer)
-:admin: --> (reject acitivity offer)
 :admin: --> (maintain activity)
 :admin: --> (generate report)
 @enduml
