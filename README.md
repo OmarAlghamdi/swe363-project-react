@@ -1,5 +1,7 @@
 # SWE-363 Project
 
+You can access a live version [here](https://omaralghamdi.github.io/swe363-project-react/)
+
 ## How to run it?
 
 ### `npm install`
