@@ -292,7 +292,7 @@ if "[valid]" then
 ======================================
 @startuml
 title
-Edit/End Request
+Edit/Cancel Request
 endtitle
 (*)  --> "view requests"
 "view requests" --> "select requests"
@@ -312,8 +312,8 @@ Endif
 
 
 else
--> "end requests"
-"end requests" --> "update database"
+-> "cancel requests"
+"cancel requests" --> "update database"
 "update database" --> (*2)
 
 Endif
