@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/swe363-project-react/static/css/main.34de6062.chunk.css",
+    "main.js": "/swe363-project-react/static/js/main.f00f670c.chunk.js",
+    "main.js.map": "/swe363-project-react/static/js/main.f00f670c.chunk.js.map",
+    "runtime-main.js": "/swe363-project-react/static/js/runtime-main.7f07098b.js",
+    "runtime-main.js.map": "/swe363-project-react/static/js/runtime-main.7f07098b.js.map",
+    "static/css/2.b0bb7f2c.chunk.css": "/swe363-project-react/static/css/2.b0bb7f2c.chunk.css",
+    "static/js/2.fc94f13e.chunk.js": "/swe363-project-react/static/js/2.fc94f13e.chunk.js",
+    "static/js/2.fc94f13e.chunk.js.map": "/swe363-project-react/static/js/2.fc94f13e.chunk.js.map",
+    "index.html": "/swe363-project-react/index.html",
+    "precache-manifest.4f42066b44472cda336763d59aa7564d.js": "/swe363-project-react/precache-manifest.4f42066b44472cda336763d59aa7564d.js",
+    "service-worker.js": "/swe363-project-react/service-worker.js",
+    "static/css/2.b0bb7f2c.chunk.css.map": "/swe363-project-react/static/css/2.b0bb7f2c.chunk.css.map",
+    "static/css/main.34de6062.chunk.css.map": "/swe363-project-react/static/css/main.34de6062.chunk.css.map",
+    "static/media/football.jfif": "/swe363-project-react/static/media/football.c7132470.jfif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7f07098b.js",
+    "static/css/2.b0bb7f2c.chunk.css",
+    "static/js/2.fc94f13e.chunk.js",
+    "static/css/main.34de6062.chunk.css",
+    "static/js/main.f00f670c.chunk.js"
+  ]
+}
