@@ -42,16 +42,25 @@ class NewEvent extends Component{
         super(props)
         this.mode = props.mode
         this.state = {
+            name: '',
+            desc: '',
             date: new Date()
         }
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleDateChange = this.handleDateChange.bind(this)
     }
     handleSubmit(e) {
         e.preventDefault()
     }
-    hadnleChange(d) {
+    handleChange(e) {
         this.setState({
-            date: d
+            [e.target.name]: e.target.value
+        })
+    }
+    handleDateChange(newDate) {
+        this.setState({
+            date: newDate
         })
     }
     getMode() {
@@ -60,6 +69,14 @@ class NewEvent extends Component{
         }
         else {
             return 'New Event'
+        }
+    }
+    componentDidMount() {
+        if (this.mode === 'edit') {
+            this.setState({
+                name: 'football',
+                desc: 'footbal in field 5'
+            })
         }
     }
     getControl(classes) {
@@ -141,7 +158,9 @@ class NewEvent extends Component{
                         id="name"
                         label="Event Name"
                         name="name"
-                        autoFocus
+                            autoFocus
+                            value={this.state.name}
+                            onChange={this.handleChange}
                     />
                     <TextField
                         variant="outlined"
@@ -151,7 +170,9 @@ class NewEvent extends Component{
                         id="desc"
                         label="Event Description"
                         name="desc"
-                        multiline
+                            multiline
+                            value={this.state.desc}
+                            onChange={this.handleChange}
                     />
                     <Grid container>
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -161,7 +182,7 @@ class NewEvent extends Component{
                                 label="Starting Date"
                                 format="dd/MM/yyyy"
                                 value={this.state.date}
-                                onChange={this.handleChange}
+                                onChange={this.handleDateChange}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
@@ -172,7 +193,7 @@ class NewEvent extends Component{
                                 id="start-time"
                                 label="Starting Time"
                                 value={this.state.date}
-                                onChange={this.handleChange}
+                                onChange={this.handleDateChange}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change time',
                                 }}
@@ -184,7 +205,7 @@ class NewEvent extends Component{
                                 label="Ending Date"
                                 format="dd/MM/yyyy"
                                 value={this.state.date}
-                                onChange={this.handleChange}
+                                onChange={this.handleDateChange}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
@@ -195,7 +216,7 @@ class NewEvent extends Component{
                                 id="end-time"
                                 label="Ending Time"
                                 value={this.state.date}
-                                onChange={this.handleChange}
+                                onChange={this.handleDateChange}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change time',
                                 }}
