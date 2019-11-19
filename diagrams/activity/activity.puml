@@ -170,7 +170,7 @@ Endif
 ===================================
 @startuml
 title
-Accept/Reject User Participation Request
+Accept/Reject Participation Request
 end title
 (*)  --> "recieve participation request"
 "recieve participation request" --> "view participation requests"
