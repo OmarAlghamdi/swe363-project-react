@@ -1,0 +1,142 @@
+@startuml
+title
+Anonymous User Registration
+end title
+(*) --> if "[user is registered]" then
+  -->[false] "sign up"
+  --> "fill in form"
+  if "[valid]" then
+	--> [true] "submit request"
+  else
+    --->[false] "fill in form"
+  endif
+  else
+  ->[true] "sign in"
+endif
+"submit request" --> (*)
+@enduml
+======================================
+@startuml
+title
+Request Activity
+endtitle
+(*) --> "browse activities"
+--> === f1 ===
+--> "search particular activity"
+=== f1 === --> "select activity"
+"search particular activity" -> "select activity"
+"select activity" --> "request activity"
+
+If "[logged in]" then
+--> [true] "update database"
+
+else
+-> [false] "sign in"
+
+If "[success]" then
+--> [true] "update database"
+else
+--> [false] (*2)
+"update database" --> (*3)
+Endif
+
+Endif
+@enduml
+======================================
+@startuml
+title
+Sign In
+end title
+
+(*)  --> "input"
+"input" --> "find user"
+
+If "[found]" then
+--> [true] "check password"
+
+If "[correct]" then
+--> [true] "check status"
+If "[not blocked]" then
+--> [false] "show error"
+else
+--> [true] (*2)
+Endif
+
+else
+--> [false] "show error"
+Endif
+
+else
+---> [false] "show error"
+
+If "" then
+--> [cancel] (*3)
+else
+--> [try agian] "input"
+Endif
+
+Endif
+@enduml
+======================================
+@startuml
+title
+Accept/Reject Request
+end title
+(*)  --> "recieve registration request"
+"recieve registration request" --> "view requests"
+
+If "[request exists]" then
+--> [true] "choose request"
+
+If "" then
+--> "accept request"
+"accept request" --> "add to database"
+"add to database" --> (*3)
+
+else
+-> "reject request"
+"reject request" -> "remove from database"
+"remove from database" -> (*2)
+Endif
+
+else
+-> [false] "show message"
+"show message" -> (*1)
+
+Endif
+@enduml
+=====================================
+@startuml
+title
+Generate Report
+endtitle
+start
+:select generate report;
+:choose type;
+:submit;
+:fetch data from database;
+:generate report;
+stop
+@enduml
+====================================
+@startuml
+title
+Block/Delete User
+endtitle
+(*)  --> "view users"
+"view users" --> "select user"
+
+If "" then
+-left-> "block user"
+"block user" --> "select duration"
+"select duration" --> "update database"
+"update database" --> (*1)
+
+else
+-> "delete user"
+"delete user" --> "remove from database"
+"remove from database" --> (*2)
+
+Endif
+@enduml
+====================================

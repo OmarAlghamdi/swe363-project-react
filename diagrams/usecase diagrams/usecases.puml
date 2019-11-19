@@ -1,0 +1,54 @@
+@startuml
+left to right direction
+
+
+:anonymous user: --> (browse activities)
+:anonymous user: --> (search particular activities)
+(search particular activities) .> (browse activities) : includes
+:anonymous user: --> (register) 
+(register) .> (sign in) : extends
+:anonymous user: --> (sign in)
+
+
+:registered user: --> (update profile)
+:registered user: --> (send feedback)
+:registered user: --> (view notification)
+
+:registered user: --> (browse activities)
+(search particular activities) ..> (browse activities) : includes
+(request activity participation) ..> (browse activities) : includes
+:registered user: --> (search particular activities)
+:registered user: --> (request activity participation)
+
+:registered user: --> (view requests)
+(track request) ..> (view requests) : includes
+(edit request) ..> (view requests) : includes
+(cancel request) ..> (view requests) : includes
+:registered user: --> (track request)
+:registered user: --> (edit request)
+:registered user: --> (cancel request)
+
+:registered user: --> (offer activity)
+:registered user: --> (view activity)
+(accept request) ..> (view activity) : includes
+(reject request) ..> (view activity) : includes
+(edit activity) ..> (view activity) : includes
+(end activity) ..> (view activity) : includes
+(reply to comments) ..> (view activity) : includes
+:registered user: --> (accept request)
+:registered user: --> (reject request)
+:registered user: --> (edit activity)
+:registered user: --> (end activity)
+:registered user: --> (reply to comments)
+
+
+:admin: --> (sign in)
+:admin: --> (accept user)
+:admin: --> (reject user)
+:admin: --> (delete user)
+:admin: --> (block user)
+:admin: --> (accept acitivity offer)
+:admin: --> (reject acitivity offer)
+:admin: --> (maintain activity)
+:admin: --> (generate report)
+@enduml
