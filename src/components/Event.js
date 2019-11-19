@@ -30,7 +30,7 @@ class Event extends Component {
                     <Button size="small" color="primary">
                         Cancel
                     </Button>
-                    <Link to='/feedback' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
+                    <Link to='/swe363-project-react/feedback' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
                     <Button size="small" color="primary">
                         Send Feedback
                     </Button>
@@ -41,12 +41,12 @@ class Event extends Component {
         else if (source === 'history' && owner === 'true') {
             return (
                 <Fragment>
-                    <Link to='accept' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
+                    <Link to='/swe363-project-react/accept' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
                         <Button size="small" color="primary">
                             Accept/Reject
                         </Button>
                     </Link>
-                    <Link to='edit-event' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
+                    <Link to='/swe363-project-react/edit-event' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
                     <Button size="small" color="primary">
                         Edit
                     </Button>

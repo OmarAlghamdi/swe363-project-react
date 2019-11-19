@@ -139,7 +139,7 @@ export default function NewEvent() {
                             </Button>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Link to='/' style={{ color: 'inherit', textDecoration: 'none', width: '40%' }}>
+                            <Link to='/swe363-project-react/' style={{ color: 'inherit', textDecoration: 'none', width: '40%' }}>
                             <Button
                                 type="cancel"
                                 variant="contained"

@@ -126,7 +126,7 @@ class Profile extends Component {
                         >
                             Save Changes
           </Button>
-                        <Link to='/' style={{
+                        <Link to='/swe363-project-react/' style={{
                             fontFamily: 'inherit', textDecoration: 'inherit',
                             width: '100%'
                         }}>

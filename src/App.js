@@ -39,51 +39,51 @@ class App extends Component {
       <Router>
         <Header signed='no'/>
         <Switch>
-          <Route path='/' exact >
+          <Route path='/swe363-project-react' exact >
             <Home events={this.state.events} />
           </Route>
-          <Route path='/signin'>
+          <Route path='/swe363-project-react/signin'>
             <SignIn/>
           </Route>
-          <Route path='/signup' component={SignUp} />
-          <Route path='/history' >
+          <Route path='/swe363-project-react/signup' component={SignUp} />
+          <Route path='/swe363-project-react/history' >
             <History
               events={this.state.events}
               user={this.state.signedUser}
             />
           </Route>
-          <Route path='/events' >
+          <Route path='/swe363-project-react/events' >
             <History
               events={this.state.events}
               admin={true}
             />
           </Route>
-          <Route path='/accept'>
+          <Route path='/swe363-project-react/accept'>
             <Accept event={
               this.state.events.filter(event => (
                 event.creator === this.state.signedUser
               ))
             } users={this.state.users}/>
           </Route>
-          <Route path='/feedbacks'>
+          <Route path='/swe363-project-react/feedbacks'>
             <Feedbacks events={
               this.state.events.filter(event => (
                 event.creator === this.state.signedUser
               ))
             } users={this.state.users} />
           </Route>
-          <Route path='/feedback' component={Feedback} />
-          <Route path='/reply'>
+          <Route path='/swe363-project-react/feedback' component={Feedback} />
+          <Route path='/swe363-project-react/reply'>
             <Feedback mode='reply' />
           </Route>
-          <Route path='/new-event' component={NewEvent} />
-          <Route path='/edit-event'>
+          <Route path='/swe363-project-react/new-event' component={NewEvent} />
+          <Route path='/swe363-project-react/edit-event'>
             <NewEvent mode='edit' />
           </Route>
-          <Route path='/profile' component={Profile} /> 
-          <Route path='/users' component={Users} /> 
-          <Route path='/reset-password' component={Forgot} /> 
-          <Route path='/reports'>
+          <Route path='/swe363-project-react/profile' component={Profile} /> 
+          <Route path='/swe363-project-react/users' component={Users} /> 
+          <Route path='/swe363-project-react/reset-password' component={Forgot} /> 
+          <Route path='/swe363-project-react/reports'>
             <Reports
               events={this.state.events}
               users={this.state.users}

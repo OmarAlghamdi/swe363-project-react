@@ -108,7 +108,7 @@ export default function SignIn() {
               </Link> */}
                         </Grid>
                         <Grid item>
-                            <RouterLink to='/signup' style={{color: 'inherit', fontFamily: 'inherit', textDecoration: 'inherit'}}>
+                            <RouterLink to='/swe363-project-react/signup' style={{color: 'inherit', fontFamily: 'inherit', textDecoration: 'inherit'}}>
                                 <Link href="#" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>

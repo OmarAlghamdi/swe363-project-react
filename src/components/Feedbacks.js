@@ -40,7 +40,7 @@ class Feedbacks extends Component {
                                             </CardContent>
                                         </CardActionArea>
                                         <CardActions>
-                                            <Link to='reply' style={{
+                                            <Link to='/swe363-project-react/reply' style={{
                                                 fontFamily: 'inherit',
                                                 textDecoration: 'inherit'
                                             }}

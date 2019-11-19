@@ -66,7 +66,7 @@ export default function Feedback() {
                         >
                             Submit
           </Button>
-                        <Link to='history' style={{
+                        <Link to='/swe363-project-react/history' style={{
                             fontFamily: 'inherit', textDecoration: 'inherit',
                             width: '40%'
                         }}>

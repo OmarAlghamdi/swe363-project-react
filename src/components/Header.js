@@ -17,10 +17,10 @@ class Header extends Component {
         if (this.signed === 'no') {
             return (
                 <Fragment>
-                    <Link style={this.linkStyle} to='/signin'>
+                    <Link style={this.linkStyle} to='/swe363-project-react/signin'>
                         <Button color='inherit'>Sign in</Button>
                     </Link>
-                    <Link style={this.linkStyle} to='/signup'>
+                    <Link style={this.linkStyle} to='/swe363-project-react/signup'>
                         <Button color='inherit'>Sign up</Button>
                     </Link>
                 </Fragment>
@@ -29,13 +29,13 @@ class Header extends Component {
         else if (this.signed === 'user'){
             return (
                 <Fragment>
-                    <Link style={this.linkStyle} to='/profile'>
+                    <Link style={this.linkStyle} to='/swe363-project-react/profile'>
                         <Button color='inherit'>Profile</Button>
                     </Link>
-                    <Link style={this.linkStyle} to='/history'>
+                    <Link style={this.linkStyle} to='/swe363-project-react/history'>
                         <Button color='inherit'>History</Button>
                     </Link>
-                    <Link style={this.linkStyle} to='/'>
+                    <Link style={this.linkStyle} to='/swe363-project-react/'>
                         <Button color='inherit'>Sign out</Button>
                     </Link>
                 </Fragment>
@@ -44,16 +44,16 @@ class Header extends Component {
         else if (this.signed === 'admin'){
             return (
                 <Fragment>
-                    <Link style={this.linkStyle} to='/events'>
+                    <Link style={this.linkStyle} to='/swe363-project-react/events'>
                         <Button color='inherit'>Events</Button>
                     </Link>
-                    <Link style={this.linkStyle} to='/users'>
+                    <Link style={this.linkStyle} to='/swe363-project-react/users'>
                         <Button color='inherit'>Users</Button>
                     </Link>
-                    <Link style={this.linkStyle} to='/reports'>
+                    <Link style={this.linkStyle} to='/swe363-project-react/reports'>
                         <Button color='inherit'>Reprots</Button>
                     </Link>
-                    <Link style={this.linkStyle} to='/'>
+                    <Link style={this.linkStyle} to='/swe363-project-react/'>
                         <Button color='inherit'>Sign out</Button>
                     </Link>
                 </Fragment>
@@ -66,7 +66,7 @@ class Header extends Component {
         return (
             <AppBar position='static'>
                 <Toolbar>
-                    <Link style={this.linkStyle} to='/'>
+                    <Link style={this.linkStyle} to='/swe363-project-react/'>
                         <Typography>KFUPM Events</Typography>
                     </Link>
                     <Grid container justify='flex-end'>

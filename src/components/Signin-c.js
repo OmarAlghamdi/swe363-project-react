@@ -116,14 +116,14 @@ class SignIn extends Component{
           </Button>
                     <Grid container>
                             <Grid item xs>
-                            <RouterLink to='/reset-password' style={{color: 'inherit', fontFamily: 'inherit', textDecoration: 'inherit'}}>
+                            <RouterLink to='/swe363-project-react/reset-password' style={{color: 'inherit', fontFamily: 'inherit', textDecoration: 'inherit'}}>
                                 <Link href="#" variant="body2">
                                      Forgot password?
                                 </Link>
                             </RouterLink>
                         </Grid>
                         <Grid item>
-                            <RouterLink to='/signup' style={{color: 'inherit', fontFamily: 'inherit', textDecoration: 'inherit'}}>
+                            <RouterLink to='/swe363-project-react/signup' style={{color: 'inherit', fontFamily: 'inherit', textDecoration: 'inherit'}}>
                                 <Link href="#" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
