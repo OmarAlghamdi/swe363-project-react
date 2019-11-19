@@ -12,6 +12,7 @@ import Profile from './components/Profile'
 import Users from './components/Users'
 import Forgot from './components/Forgot'
 import Accept from './components/Accept'
+import Reports from './components/Reports'
 
 import { users as userList, events as eventList } from './datastore'
 
@@ -82,6 +83,12 @@ class App extends Component {
           <Route path='/profile' component={Profile} /> 
           <Route path='/users' component={Users} /> 
           <Route path='/reset-password' component={Forgot} /> 
+          <Route path='/reports'>
+            <Reports
+              events={this.state.events}
+              users={this.state.users}
+            />
+          </Route>
         </Switch>
       </Router>
     )
