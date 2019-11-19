@@ -289,3 +289,32 @@ if "[valid]" then
   endif
 "submit request" --> (*)
 @enduml
+======================================
+@startuml
+title
+Edit/End Request
+endtitle
+(*)  --> "view requests"
+"view requests" --> "select requests"
+
+If "" then
+-left-> "edit requests"
+"edit requests" --> "enter new values"
+
+If "[valid]" then
+--> [true] "submit"
+else
+---> [false] "enter new values"
+Endif
+
+"submit" --> "update requests"
+"update requests" --> (*)
+
+
+else
+-> "end requests"
+"end requests" --> "update database"
+"update database" --> (*2)
+
+Endif
+@enduml
