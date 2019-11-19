@@ -46,7 +46,16 @@ class App extends Component {
           </Route>
           <Route path='/signup' component={SignUp} />
           <Route path='/history' >
-            <History events={this.state.events} />
+            <History
+              events={this.state.events}
+              user={this.state.signedUser}
+            />
+          </Route>
+          <Route path='/events' >
+            <History
+              events={this.state.events}
+              admin={true}
+            />
           </Route>
           <Route path='/accept'>
             <Accept event={

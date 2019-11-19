@@ -7,6 +7,8 @@ class History extends Component{
     constructor(props) {
         super(props)
         this.events = props.events
+        this.user = props.user
+        this.admin = props.admin
     }
     getStatus() {
         return 'waiting'
@@ -22,11 +24,11 @@ class History extends Component{
                         marginLeft: '8px'
                     }}>
                         <Typography component='h1' variant='h4'>
-                            You Created
+                            {this.admin? 'Events' : 'You Created'}
                         </Typography>
                     </Grid>
                     {this.events.filter(event => (
-                    event.creator === 'omar@kfupm.com'
+                    event.creator === this.user || this.admin
                 )).map(event => (
                         <Grid item xs={12} md={6} lg={3}>
                             <Event source='history'
@@ -38,7 +40,8 @@ class History extends Component{
                     ))}
                 </Grid>
 
-                <Grid container spacing={1}>
+                {
+                    this.admin? '' : <Grid container spacing={1}>
                     <Grid item style={{
                         marginTop: '8px',
                         marginLeft: '8px'
@@ -58,7 +61,9 @@ class History extends Component{
                             />
                         </Grid>
                     ))}
-                </Grid>
+                </Grid>   
+                }
+                
             </div>
         )
     }
