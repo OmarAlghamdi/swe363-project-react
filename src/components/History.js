@@ -27,6 +27,7 @@ class History extends Component{
                             {this.admin? 'Events' : 'You Created'}
                         </Typography>
                     </Grid>
+                    <Grid container spacing={1}>
                     {this.events.filter(event => (
                     event.creator === this.user || this.admin
                 )).map(event => (
@@ -39,7 +40,8 @@ class History extends Component{
                             startTime={event.startTime}
                             />
                         </Grid>
-                    ))}
+                ))}
+                        </Grid>
                 </Grid>
 
                 {
@@ -51,7 +53,8 @@ class History extends Component{
                         <Typography component='h1' variant='h4'>
                             You Signed Up For 
                         </Typography>
-                    </Grid>
+                        </Grid>
+                        <Grid container spacing={1}>
                     {this.events.filter(event => (
                     event.creator !== 'omar@kfupm.com'
                 )).map(event => (
@@ -64,7 +67,8 @@ class History extends Component{
                             startTime={event.startTime}
                             />
                         </Grid>
-                    ))}
+                ))}
+                            </Grid>
                 </Grid>   
                 }
                 
