@@ -234,3 +234,32 @@ Endif
 "submit" --> "update profile"
 "update profile" --> (*)
 @enduml
+===================================
+@startuml
+title
+Edit/End Activity
+endtitle
+(*)  --> "view activities"
+"view activities" --> "select activity"
+
+If "" then
+-left-> "edit activity"
+"edit activity" --> "enter new values"
+
+If "[valid]" then
+--> [true] "submit"
+else
+---> [false] "enter new values"
+Endif
+
+"submit" --> "update activity"
+"update activity" --> (*)
+
+
+else
+-> "end activity"
+"end activity" --> "update database"
+"update database" --> (*2)
+
+Endif
+@enduml
