@@ -20,10 +20,8 @@ left to right direction
 :registered user: --> (request activity participation)
 
 :registered user: --> (view requests)
-(track request) ..> (view requests) : includes
 (edit request) ..> (view requests) : includes
 (cancel request) ..> (view requests) : includes
-:registered user: --> (track request)
 :registered user: --> (edit request)
 :registered user: --> (cancel request)
 
