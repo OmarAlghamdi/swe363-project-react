@@ -276,3 +276,16 @@ endtitle
 "add reply" --> (*)
 @enduml
 =====================================
+@startuml
+title
+Offer Activity
+end title
+(*) --> [user is in homepage] "add activity"
+"add activity" --> "fill in form"
+if "[valid]" then
+  --> [true] "submit request"
+  else
+  --->[false] "fill in form"
+  endif
+"submit request" --> (*)
+@enduml
