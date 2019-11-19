@@ -33,11 +33,13 @@ left to right direction
 (accept request) ..> (view activity) : includes
 (reject request) ..> (view activity) : includes
 (edit activity) ..> (view activity) : includes
-(cancel activity) ..> (view activity) : includes
+(end activity) ..> (view activity) : includes
+(reply to comments) ..> (view activity) : includes
 :registered user: --> (accept request)
 :registered user: --> (reject request)
 :registered user: --> (edit activity)
-:registered user: --> (cancel activity)
+:registered user: --> (end activity)
+:registered user: --> (reply to comments)
 
 
 :admin: --> (sign in)
