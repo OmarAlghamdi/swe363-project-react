@@ -11,7 +11,6 @@ left to right direction
 
 
 :registered user: --> (update profile)
-:registered user: --> (send feedback)
 :registered user: --> (view notification)
 
 :registered user: --> (browse activities)
@@ -35,11 +34,14 @@ left to right direction
 (edit activity) ..> (view activity) : includes
 (end activity) ..> (view activity) : includes
 (reply to comments) ..> (view activity) : includes
+(send feedback) ..> (view activity) : includes
 :registered user: --> (accept request)
 :registered user: --> (reject request)
 :registered user: --> (edit activity)
 :registered user: --> (end activity)
 :registered user: --> (reply to comments)
+:registered user: --> (send feedback)
+
 
 
 :admin: --> (sign in)
