@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Header />
+        <Header signed='no'/>
         <Switch>
           <Route path='/' exact >
             <Home events={this.state.events} />
