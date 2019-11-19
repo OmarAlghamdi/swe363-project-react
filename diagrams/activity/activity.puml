@@ -263,3 +263,16 @@ else
 
 Endif
 @enduml
+====================================
+@startuml
+title
+Reply To Comments
+endtitle
+(*)  --> "view activities"
+"view activities" --> "select activity"
+"select activity" --> "view comments"
+"view comments" --> "select comment"
+"select comment" --> "add reply"
+"add reply" --> (*)
+@enduml
+=====================================
