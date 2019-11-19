@@ -44,7 +44,13 @@ const events = [
         creator: 'omar@kfupm.com',
         joined: ['abdul@kfupm.com'],
         waiting: ['mohd@kfupm.com'],
-        feedbacks: []
+        feedbacks: [
+            {
+                by: 'abdul@kfupm.com',
+                content: 'great match',
+                reply: ''
+            }
+        ]
     },
     {
         id: '2',

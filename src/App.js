@@ -5,6 +5,7 @@ import Home from './components/Home'
 import SignIn from './components/Signin-c'
 import SignUp from './components/Signup-c'
 import History from './components/History'
+import Feedbacks from './components/Feedbacks'
 import Feedback from './components/Feedback'
 import NewEvent from './components/NewEvent-c'
 import Profile from './components/Profile'
@@ -54,7 +55,17 @@ class App extends Component {
               ))
             } users={this.state.users}/>
           </Route>
+          <Route path='/feedbacks'>
+            <Feedbacks events={
+              this.state.events.filter(event => (
+                event.creator === this.state.signedUser
+              ))
+            } users={this.state.users} />
+          </Route>
           <Route path='/feedback' component={Feedback} />
+          <Route path='/reply'>
+            <Feedback mode='reply' />
+          </Route>
           <Route path='/new-event' component={NewEvent} />
           <Route path='/edit-event'>
             <NewEvent mode='edit' />
