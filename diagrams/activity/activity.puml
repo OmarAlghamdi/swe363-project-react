@@ -140,3 +140,30 @@ else
 Endif
 @enduml
 ====================================
+@startuml
+title
+Accept/Reject Activity Request
+end title
+(*)  --> "recieve activity request"
+"recieve activity request" --> "view activity requests"
+
+If "[request exists]" then
+--> [true] "choose request"
+
+If "" then
+--> "accept request"
+"accept request" --> "add activity to database"
+"add activity to database" --> (*3)
+
+else
+-> "reject request"
+"reject request" -> "remove activity from database"
+"remove activity from database" -> (*2)
+Endif
+
+else
+-> [false] "show message"
+"show message" -> (*1)
+
+Endif
+@enduml
