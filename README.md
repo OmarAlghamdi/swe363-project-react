@@ -22,5 +22,25 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br />
 
+## How to acces all the pages
 
+Not all the pages are accessible. since this is just the implementation of the front-end
+
+To access the rest of the pages appends its url to the end of the url
+
+- '/' => home page (any)
+- '/users' => activate/block/delete users page (admin)
+- '/events' => event management page (admin)
+- '/reports' => reports page (admin)
+- '/new-event' => create event page (signed user)
+- '/edit-event' => edit event page (signed user)
+- '/history' => history page (signed user)
+- '/profile' => edit profile page (signed user)
+- '/signin' => sign in page (not signed user)
+- '/signup' => sign up page (not signed user)
+- '/accept' => accept user into event page  (signed user)
+- '/feedback' => send feedback page  (signed user)
+- '/feedbacks' => see feedbacks page  (signed user)
+- '/reply' => reply to page  (signed user)
+- '/reset-password' => reset password page  (not signed user)
 
