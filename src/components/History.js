@@ -34,7 +34,9 @@ class History extends Component{
                             <Event source='history'
                                 name={event.name}
                                 desc={event.desc}
-                                owner='true'
+                            owner='true'
+                            startDate={event.startDate}
+                            startTime={event.startTime}
                             />
                         </Grid>
                     ))}
@@ -57,7 +59,9 @@ class History extends Component{
                             <Event source='history'
                                 name={event.name}
                                 desc={event.desc}
-                                status={this.getStatus()}
+                            status={this.getStatus()}
+                            startDate={event.startDate}
+                            startTime={event.startTime}
                             />
                         </Grid>
                     ))}

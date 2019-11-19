@@ -15,10 +15,12 @@ class Home extends Component {
                 <Grid container spacing={1}>
                 {this.events.map(event => (
                         <Grid item xs={12} md={6} lg={3}>
-                            <Event source='home'
-                                name={event.name}
-                                desc={event.desc}
-                            />
+                        <Event source='home'
+                            name={event.name}
+                            desc={event.desc}
+                            startDate={event.startDate}
+                            startTime={event.startTime}
+                        />
                         </Grid>
                     ))}
                 </Grid>

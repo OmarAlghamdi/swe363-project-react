@@ -11,6 +11,8 @@ class Event extends Component {
         this.name = props.name
         this.desc = props.desc
         this.owner = props.owner
+        this.startDate = props.startDate
+        this.startTime = props.startTime
 
     }
     getControl(source, owner) {
@@ -82,6 +84,9 @@ class Event extends Component {
               </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
                             {this.desc}
+                        </Typography>
+                        <Typography variant="body2"  component="h6">
+                            {`Starts on ${this.startDate} at ${this.startTime}`}
               </Typography>
                     </CardContent>
                 </CardActionArea>
