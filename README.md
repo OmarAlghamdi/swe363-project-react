@@ -2,6 +2,10 @@
 
 ## How to run it?
 
+### `npm install`
+
+Download the dependcies
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
