@@ -101,9 +101,9 @@ ROOT
             waiting: [user_id],
             feedbacks: [
             {
-                by: 'abdul@kfupm.com',
-                content: 'great match',
-                reply: ''
+               by: User
+               text : String
+               Reply : String
             }
  
 
