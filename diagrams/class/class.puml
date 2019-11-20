@@ -28,6 +28,8 @@ class Feedback {
    Reply : String
 }
 
-User "*" - "*" Event
+User "1" - "*" Event : creates
+User "*" - "*" Event : joins
+User "1" - "*" Feedback : sends
 Event "*" *- "*" Feedback
 @enduml
