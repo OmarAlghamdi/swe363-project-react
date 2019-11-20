@@ -75,3 +75,36 @@ Product Features
 3.8.	The admin shall be able to generate a report
 
 
+
+
+ROOT
+    USERS (collection)
+        user_id (document)
+        firstName: ""
+        lastName: ""
+        email: ""
+        password: ""
+        type: ""
+        state: ""
+        
+    EVENTS (collection)
+        event_id (document)
+            id: "#"
+            name: ""
+            desc: ""
+            startDate: "Date"
+            startTime: "Date"
+            endDate: "Date"
+            endTime: "Date"
+            creator: "Date"
+            joined: [user_id],
+            waiting: [user_id],
+            feedbacks: [
+            {
+                by: 'abdul@kfupm.com',
+                content: 'great match',
+                reply: ''
+            }
+ 
+
+
