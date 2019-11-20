@@ -1,0 +1,24 @@
+@startuml
+class user {
+    firstName: String
+    lastName: String
+    email: String
+    password: String
+    type: String
+    state: String
+}
+
+class events {
+   ID : Integer
+   Name : String
+   Desc : String
+   startDate: Date
+   startTime: Date
+   endDate: Date
+   endTime: Date
+   creator: String
+   joined []: String
+   waiting []: String
+   feedbacks[]:
+}
+@enduml
