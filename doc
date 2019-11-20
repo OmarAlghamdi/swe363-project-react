@@ -1,0 +1,77 @@
+PURPOSE
+The primary goal of this document is to define and describe the functions and specifications
+of the KFUPM e-activities software system to help the developer team to not deviate from the requirements by documenting them professionally and providing guidance and reference for the upcoming phases. 
+This Document clearly illustrates user requirements, use case diagrams, activity models, class models, navigation models, presentation models, and user interface.
+
+A second goal for the document, is to help making a contract with the customer that
+includes system requirements that are professionally documented. To make things clear to the
+customer, so he can either accepts or declines the software project.
+
+
+	
+GOAL
+The objective of this project is to design a KFUPM e-activities software system for KFUPM. 
+The system shall provide a platform that unify and present all the extracurricular activities that are ongoing in KFUPM. 
+This will provide the students with a one stop shop website where they can check and participate in all of the activities that are taking place in KFUPM, 
+thus saving them time and the hassle of keeping up with every activity organizer on his own.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Product Features 
+1.	Anonymous user
+1.1.	The anonymous user shall be able to register in the system.
+1.2.	The anonymous user shall be able to sign into the system.
+1.3.	The anonymous user shall be able to browse activities.
+1.4.	The anonymous user shall be able to search for particular activities.
+
+2.	Registered user
+2.1.	The registered user shall be able to update his profile
+2.2.	The registered user may be able to view his notifications
+2.3.	The registered user shall be able to browse activities
+2.4.	The registered user shall be able to search for particular activities
+2.5.	The registered user shall be able to request activity participation
+2.6.	The registered user shall be able to view his own participation request activities
+2.7.	The registered user shall be able to edit his own participation request activities 
+2.8.	The registered user shall be able to cancel his own participation request activities
+2.9.	The registered user shall be able to offer an activity
+2.10.	The registered user shall be able edit an activity 
+2.11.	The registered user shall be able end an activity 
+2.12.	The registered user shall be able view incoming participation requests
+2.13.	The registered user shall be able accept incoming participation requests
+2.14.	The registered user shall be able reject incoming participation requests
+2.15.	The registered user shall be able to send a feedback
+2.16.	The registered user may be able to reply to a comment
+
+3.	Admin
+3.1.	The admin shall be able to sign in
+3.2.	The admin shall be able to accept user registration
+3.3.	The admin shall be able to reject user registration
+3.4.	The admin shall be able to delete a user
+3.5.	The admin shall be able to block a user
+3.6.	The admin shall be able to accept an activity offer
+3.7.	The admin shall be able to reject an activity offer
+3.8.	The admin shall be able to generate a report
+
+
