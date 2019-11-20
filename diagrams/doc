@@ -1,39 +1,17 @@
 PURPOSE
 The primary goal of this document is to define and describe the functions and specifications
-of the KFUPM e-activities software system to help the developer team to not deviate from the requirements by documenting them professionally and providing guidance and reference for the upcoming phases. 
-This Document clearly illustrates user requirements, use case diagrams, activity models, class models, navigation models, presentation models, and user interface.
+of the KFUPM e-activities web app to help the developer team to not deviate from the requirements by documenting them professionally and providing guidance and reference for the upcoming phases.
+This Document clearly illustrates user requirements, use case diagrams, activity models, class models, database models, navigation models, presentation models, and user interface.
 
 A second goal for the document, is to help making a contract with the customer that
 includes system requirements that are professionally documented. To make things clear to the
 customer, so he can either accepts or declines the software project.
 
-
-	
 GOAL
-The objective of this project is to design a KFUPM e-activities software system for KFUPM. 
+The objective of this project is to design a KFUPM e-activities web app for KFUPM. 
 The system shall provide a platform that unify and present all the extracurricular activities that are ongoing in KFUPM. 
 This will provide the students with a one stop shop website where they can check and participate in all of the activities that are taking place in KFUPM, 
 thus saving them time and the hassle of keeping up with every activity organizer on his own.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -105,6 +83,3 @@ ROOT
                text : String
                Reply : String
             }
- 
-
-
