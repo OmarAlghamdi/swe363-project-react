@@ -1,5 +1,5 @@
 @startuml
-class user {
+class User {
     firstName: String
     lastName: String
     email: String
@@ -8,7 +8,7 @@ class user {
     state: String
 }
 
-class events {
+class Event {
    ID : Integer
    Name : String
    Desc : String
@@ -17,8 +17,17 @@ class events {
    endDate: Date
    endTime: Date
    creator: String
-   joined []: String
-   waiting []: String
-   feedbacks[]:
+   joined []: User
+   waiting []: User
+   feedbacks[]: Feedback
 }
+
+class Feedback {
+   by: User
+   text : String
+   Reply : String
+}
+
+User "*" - "*" Event
+Event "*" *- "*" Feedback
 @enduml
