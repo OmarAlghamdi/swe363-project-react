@@ -128,18 +128,21 @@ class ResetPassword {
 }
 
 Index -- EventManager
-Index -right- SignIn
+Index -left- SignIn
 Index -up- SignUp
 Index -right- Dashboard
 Index -- Profile 
 SignIn -- Index : User
-SignIn -- Admin : Admin
-SignIn -- ResetPassword
+SignIn -left- Admin : Admin
+SignIn -up- ResetPassword
 SignIn -up- SignUp
-Admin -- ApproveEvent
-Admin -- Reports
-EventManager -- NewEvent
+Admin -up- ApproveEvent
+Admin -down- Reports
+EventManager -right- NewEvent
 EventManager -- EditEvent
+EventManager -left- Profile
+Dashboard -- EventManager
+Dashboard -- Profile
 Dashboard -right- Feedbacks
 Feedbacks -up- SendFeedback
 Feedbacks -right- ReplyFeedback
