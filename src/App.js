@@ -23,24 +23,25 @@ class App extends Component {
     super()
     this.state = {
       signedUser: 'omar@kfupm.com',
-      events: this.getEvents(),
+      events: [],
       users: this.getUsers()
     }
+    this.getEvents()
   }
 
   getEvents() {
-    let events = []
-    firebase.firestore().collection('events').get()
-    .then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        let event = {
-          id: doc.id,
-          ...doc.data()
-        }
-        events.push(event)
+    
+    firebase.firestore().collection('events')
+    .onSnapshot(snapshot => {
+      const allEvents = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }))
+      this.setState({
+        events: allEvents
       })
     })
-    return events
+    
   }
   getUsers() {
     return userList
