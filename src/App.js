@@ -14,8 +14,9 @@ import Forgot from './components/Forgot'
 import Accept from './components/Accept'
 import Reports from './components/Reports'
 
-import { users as userList, events as eventList } from './datastore'
+import { users as userList } from './datastore'
 
+import firebase from './firebase'
 
 class App extends Component {
   constructor() {
@@ -28,7 +29,18 @@ class App extends Component {
   }
 
   getEvents() {
-    return eventList
+    let events = []
+    firebase.firestore().collection('events').get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        let event = {
+          id: doc.id,
+          ...doc.data()
+        }
+        events.push(event)
+      })
+    })
+    return events
   }
   getUsers() {
     return userList
