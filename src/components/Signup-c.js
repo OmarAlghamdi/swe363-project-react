@@ -12,7 +12,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, Redirect } from 'react-router-dom'
+
+import firebase from '../firebase'
 
 const styles = theme => ({
     '@global': {
@@ -46,13 +48,26 @@ class SignUp extends Component{
             firstName: '',
             lastName: '',
             email: '',
-            password: ''
+            password: '',
+            redirect: false
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     handleSubmit(e) {
         e.preventDefault()
+        firebase.firestore().collection('users').add({
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+            state: 'waiting',
+            type: 'user',
+        })
+        this.setState({
+            redirect: true
+        })
+        
     }
     handleChange(e) {
         this.setState({
@@ -60,6 +75,11 @@ class SignUp extends Component{
         })
     }
     render() {
+
+        if (this.state.redirect === true){
+            return <Redirect to='/swe363-project-react/signin'/>
+        }
+
         const { classes } = this.props
         return (
             <Container component="main" maxWidth="xs">
