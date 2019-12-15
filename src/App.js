@@ -23,11 +23,12 @@ class App extends Component {
     super()
     this.state = {
       signedUser: 'omar@omar.com',
-      type: 'user',
+      type: 'admin',
       events: [],
-      users: this.getUsers()
+      users: []
     }
     this.getEvents()
+    this.getUsers()
   }
 
   getEvents() {
@@ -45,7 +46,15 @@ class App extends Component {
     
   }
   getUsers() {
-    return userList
+    firebase.firestore().collection('users')
+    .onSnapshot(snapshot => {
+      const allEvents = snapshot.docs.map(doc => ({
+        ...doc.data()
+      }))
+      this.setState({
+        users: allEvents
+      })
+    })
   }
   setUser(user, type){
     debugger
