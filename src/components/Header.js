@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { AppBar, Toolbar, Typography, Grid, Button } from '@material-ui/core'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 class Header extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class Header extends Component {
     }
 
     getControl() {
-        if (this.signed === 'no') {
+        if (this.signed === '') {
             return (
                 <Fragment>
                     <Link style={this.linkStyle} to='/swe363-project-react/signin'>
@@ -29,6 +29,9 @@ class Header extends Component {
         else if (this.signed === 'user'){
             return (
                 <Fragment>
+                    <Link style={this.linkStyle} to='/swe363-project-react/new-event'>
+                        <Button color='inherit'>New Event</Button>
+                    </Link>
                     <Link style={this.linkStyle} to='/swe363-project-react/profile'>
                         <Button color='inherit'>Profile</Button>
                     </Link>
@@ -62,8 +65,8 @@ class Header extends Component {
     }
 
     render() {
-
         return (
+            
             <AppBar position='static'>
                 <Toolbar>
                     <Link style={this.linkStyle} to='/swe363-project-react/'>
@@ -78,4 +81,4 @@ class Header extends Component {
     }
 }
 
-export default Header
+export default withRouter(Header)

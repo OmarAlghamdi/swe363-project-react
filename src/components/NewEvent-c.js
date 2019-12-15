@@ -43,6 +43,7 @@ class NewEvent extends Component{
     constructor(props) {
         super(props)
         this.mode = props.mode
+        this.user = props.user
         this.state = {
             name: '',
             desc: '',
@@ -62,6 +63,20 @@ class NewEvent extends Component{
     }
     handleSubmit(e) {
         e.preventDefault()
+        
+        firebase.firestore().collection('events')
+        .add({
+            name: this.state.name,
+            desc: this.state.desc,
+            startDate: this.date2date(this.state.startDate),
+            endDate: this.date2date(this.state.endDate),
+            startTime: this.date2time(this.state.startDate), 
+            endTime: this.date2time(this.state.endDate),
+            creator: this.user
+        })
+        this.setState({
+            updated: true
+        })
     }
     handleChange(e) {
         this.setState({
@@ -91,7 +106,6 @@ class NewEvent extends Component{
     }
     handleSave(e){
         e.preventDefault()
-        console.log(this.state.startDate)
         
         firebase.firestore().collection('events').doc(this.id)
         .update({
@@ -106,6 +120,7 @@ class NewEvent extends Component{
             updated: true
         })
     }
+    
     getMode() {
         if (this.mode === 'edit') {
             return 'Edit Event'
@@ -168,6 +183,7 @@ class NewEvent extends Component{
                                 variant="contained"
                                 color="primary"
                                 className={classes.button}
+                                onClick={this.handleSubmit}
                             >
                                 Submit
                             </Button>

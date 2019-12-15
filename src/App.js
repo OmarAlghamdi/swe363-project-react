@@ -22,8 +22,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      signedUser: '',
-      type: '',
+      signedUser: 'omar@omar.com',
+      type: 'user',
       events: [],
       users: []
     }
@@ -109,7 +109,10 @@ class App extends Component {
           <Route path='/swe363-project-react/reply' exact >
             <Feedback mode='reply' />
           </Route>
-          <Route path='/swe363-project-react/new-event' exact component={NewEvent} />
+          {/* <Route path='/swe363-project-react/new-event' exact component={NewEvent} /> */}
+          <Route path='/swe363-project-react/new-event' exact>
+            <NewEvent user={this.state.signedUser} />
+          </Route>
           <Route path='/swe363-project-react/edit-event' exact>
             <NewEvent mode='edit' />
           </Route>
