@@ -148,8 +148,8 @@ class Reports extends Component {
                     <ProgressBar style={{
                         marginBottom: '32px'
                     }}>
-                        <ProgressBar variant="success" now={closed} key={1} label={
-                            `${closed.toFixed(2)}% closed feedback`
+                        <ProgressBar variant="danger" now={closed} key={1} label={
+                            `${pending.toFixed(2)}% closed feedback`
                         } />
                         <ProgressBar variant="danger" now={pending} key={2}
                          label={

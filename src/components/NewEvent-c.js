@@ -72,7 +72,8 @@ class NewEvent extends Component{
             endDate: this.date2date(this.state.endDate),
             startTime: this.date2time(this.state.startDate), 
             endTime: this.date2time(this.state.endDate),
-            creator: this.user
+            creator: this.user,
+            feedbacks: []
         })
         this.setState({
             updated: true
