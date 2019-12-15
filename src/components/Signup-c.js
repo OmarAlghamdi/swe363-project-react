@@ -85,7 +85,7 @@ class SignUp extends Component{
     render() {
 
         if (this.state.redirect === true){
-            return <Redirect to='/swe363-project-react/signin'/>
+            return <Redirect to='/swe363-project-react/'/>
         }
 
         const { classes } = this.props
