@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Card, CardActionArea, CardActions, CardMedia, CardContent, Typography, Button } from '@material-ui/core'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import football from '../assets/football.jfif'
 
 import firebase from '../firebase'
@@ -18,23 +18,77 @@ class Event extends Component {
         this.data = props.data
         console.log(this.data)
         this.handleDelete = this.handleDelete.bind(this)
+        this.handleJoin = this.handleJoin.bind(this)
+        this.state = {
+            user: '', 
+            needAuth: false, 
+            joinable: true
+        }
+        this.registerRealtimeAuthListener()
+        console.log(this.state.user)
+        console.log('event id')
+        console.log(this.data.id)
     }
 
-    
+    registerRealtimeAuthListener(){
+        firebase.auth().onAuthStateChanged(user => {
 
-    handleDelete(){
+            if (user) {
+                this.setState({
+                    user: user.email
+                })
+            } else {
+                this.setState({
+                    user: ''
+                })
+            }
+        })
+    }
+
+    handleDelete(e){
+        e.preventDefault()  
         firebase.firestore().collection('events').doc(this.data.id)
         .delete()
+    }
+    handleJoin(e){
+        e.preventDefault()  
+        if (this.state.user === ''){
+            console.log(this.state.user)
+            this.setState({
+                needAuth: true
+            })
+        } else {
+            firebase.firestore().collection('events').doc(this.data.id)
+            .update({
+                joined: firebase.firestore.FieldValue.arrayUnion(this.state.user)
+            })
+            this.setState({
+                joinable: false
+            })
+        }
+        
     }
 
     getControl(source, owner) {
 
         if (source === 'home') {
-            return (
-                <Button size="small" color="primary">
-                    Join
-                </Button>
-            )
+            if (this.state.joinable){
+                return (
+                    <Button size="small" color="primary"
+                        onClick={this.handleJoin}>
+                        Join
+                    </Button>
+                )
+            } else {
+                return (
+                    <Button size="small" color="primary"
+                        onClick={this.handleJoin}
+                        disabled>
+                        joined
+                    </Button>
+                )
+            }
+            
         }
         else if (source === 'history' && owner !== 'true') {
             return (
@@ -85,6 +139,10 @@ class Event extends Component {
         }
     }
     render() {
+        if (this.state.needAuth){
+            return <Redirect to='/swe363-project-react/signin' />
+        }
+
         return (
             <Card>
                 <CardActionArea>

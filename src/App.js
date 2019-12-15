@@ -23,7 +23,7 @@ class App extends Component {
     super()
     this.state = {
       signedUser: 'omar@omar.com',
-      type: 'user',
+      type: '',
       events: [],
       users: []
     }
@@ -81,6 +81,7 @@ class App extends Component {
           <Route path='/swe363-project-react/history' exact >
             <History
               events={this.state.events}
+              data={this.state.events}
               user={this.state.signedUser}
             />
           </Route>

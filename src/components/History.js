@@ -66,6 +66,7 @@ class History extends Component{
                             status={this.getStatus()}
                             startDate={event.startDate}
                             startTime={event.startTime}
+                            data={event}
                             />
                         </Grid>
                 ))}

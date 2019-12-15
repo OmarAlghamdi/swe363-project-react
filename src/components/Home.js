@@ -20,6 +20,7 @@ class Home extends Component {
                             desc={event.desc}
                             startDate={event.startDate}
                             startTime={event.startTime}
+                            data={event}
                         />
                         </Grid>
                     ))}
