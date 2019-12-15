@@ -56,6 +56,14 @@ class SignUp extends Component{
     }
     handleSubmit(e) {
         e.preventDefault()
+        firebase.auth().createUserWithEmailAndPassword(
+            this.state.email,
+            this.state.password
+        )
+        .catch(e => {
+            console.log(e.message)
+        })
+        
         firebase.firestore().collection('users').add({
             firstName: this.state.firstName,
             lastName: this.state.lastName,

@@ -56,6 +56,12 @@ class SignIn extends Component{
     }
     handleSubmit(e) {
         e.preventDefault()
+        firebase.auth().signInWithEmailAndPassword(
+            this.state.email,
+            this.state.password
+        )
+        .then(user => console.log(user))
+        .catch(e => console.log(e.message))
         firebase.firestore().collection('users')
         .where('email', '==', this.state.email)
         .get()

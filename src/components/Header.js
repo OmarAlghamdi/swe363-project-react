@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react'
 import { AppBar, Toolbar, Typography, Grid, Button } from '@material-ui/core'
 import { Link, withRouter } from 'react-router-dom'
 
+import firebase from '../firebase'
+
 class Header extends Component {
     constructor(props) {
         super(props)
@@ -11,10 +13,52 @@ class Header extends Component {
             fontFamily: 'inherit'
         }
         this.signed = this.props.signed
+        this.state = {
+            signed: false,
+            admin: false
+        }
+        this.registerRealtimeAuthListener()
+        this.handleSignout = this.handleSignout.bind(this)
+    }
+
+    registerRealtimeAuthListener(){
+        firebase.auth().onAuthStateChanged(user => {
+            console.log(user)
+            
+            if (user){
+                this.setState({
+                    signed: true
+                })
+            } else {
+                this.setState({
+                    signed: false,
+                    admin: false
+                })
+            }
+
+            firebase.firestore().collection('users')
+            .where('email', '==', user.email)
+            .get()
+            .then(query => {
+                query.forEach(doc => {
+                    if (doc.data().type === 'admin'){
+                        console.log('ADMIN')
+                        this.setState({
+                            admin: true
+                        })
+                    }
+                })
+            })
+        })
+    }
+
+    handleSignout(e){
+        e.preventDefault()  
+        firebase.auth().signOut()
     }
 
     getControl() {
-        if (this.signed === '') {
+        if (!this.state.signed) {
             return (
                 <Fragment>
                     <Link style={this.linkStyle} to='/swe363-project-react/signin'>
@@ -26,7 +70,7 @@ class Header extends Component {
                 </Fragment>
             )
         }
-        else if (this.signed === 'user'){
+        else if (this.state.signed && !this.state.admin){
             return (
                 <Fragment>
                     <Link style={this.linkStyle} to='/swe363-project-react/new-event'>
@@ -39,12 +83,14 @@ class Header extends Component {
                         <Button color='inherit'>History</Button>
                     </Link>
                     <Link style={this.linkStyle} to='/swe363-project-react/'>
-                        <Button color='inherit'>Sign out</Button>
+                        <Button color='inherit'
+                            onClick={this.handleSignout}
+                            >Sign out</Button>
                     </Link>
                 </Fragment>
             )
         }
-        else if (this.signed === 'admin'){
+        else if (this.state.signed && this.state.admin){
             return (
                 <Fragment>
                     <Link style={this.linkStyle} to='/swe363-project-react/events'>
@@ -57,7 +103,9 @@ class Header extends Component {
                         <Button color='inherit'>Reprots</Button>
                     </Link>
                     <Link style={this.linkStyle} to='/swe363-project-react/'>
-                        <Button color='inherit'>Sign out</Button>
+                        <Button color='inherit'
+                            onClick={this.handleSignout}
+                            >Sign out</Button>
                     </Link>
                 </Fragment>
             )
