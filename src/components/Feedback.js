@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
     '@global': {
@@ -29,8 +29,10 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Feedback() {
+export default function withRouter(Feedback()) {
     const classes = useStyles();
+    const id = props.location.search.substring(4)
+    console.log(this.id)
 
     return (
         <Container component="main" maxWidth="xs">

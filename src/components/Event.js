@@ -97,7 +97,7 @@ class Event extends Component {
                         onClick={this.handleDelete}>
                         Cancel
                     </Button>
-                    <Link to='/swe363-project-react/feedback' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
+                    <Link to={`/swe363-project-react/feedback/?id=${this.data.id}`} style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
                     <Button size="small" color="primary">
                         Send Feedback
                     </Button>

@@ -6,7 +6,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { Link } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
+
+import firebase from '../firebase'
 
 const styles = theme => ({
     '@global': {
@@ -33,7 +35,56 @@ class Feedback extends Component{
     constructor(props) {
         super(props)
         this.mode = props.mode
+        this.state = {
+            user: '',
+            content: '', 
+            submitted: false
+        }
+        this.id = props.location.search.substring(4)
+        console.log(this.id)
+        this.registerRealtimeAuthListener()
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
+
+    registerRealtimeAuthListener(){
+        firebase.auth().onAuthStateChanged(user => {
+
+            if (user) {
+                this.setState({
+                    user: user.email
+                })
+            } else {
+                this.setState({
+                    user: ''
+                })
+            }
+        })
+    }
+    handleChange(e){
+        e.preventDefault()
+        this.setState({
+            content: e.target.value
+        })
+    }
+    handleSubmit(e){
+        e.preventDefault()
+        firebase.firestore().collection('feedbacks')
+        .add({
+            by: this.state.user,
+            content: this.state.content
+        })
+        .then(ref => {
+            firebase.firestore().collection('events').doc(this.id)
+            .update({
+                feedbacks: firebase.firestore.FieldValue.arrayUnion(ref._key.path.segments[1])
+            })
+        })
+        this.setState({
+            submitted: true
+        })
+    }
+
     getMode() {
         if (this.mode === 'reply') {
             return 'Reply'
@@ -51,6 +102,10 @@ class Feedback extends Component{
         }
     }
     render() {
+        if (this.state.submitted){
+            return <Redirect to='swe363-project-react/history' />
+        }
+
         const { classes } = this.props
         return (
             <Container component="main" maxWidth="xs">
@@ -72,6 +127,7 @@ class Feedback extends Component{
                         autoFocus
                         multiline
                         rows='10'
+                        onChange={this.handleChange}
                     />
 
 
@@ -83,6 +139,7 @@ class Feedback extends Component{
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            onClick={this.handleSubmit}
                         >
                             Submit
           </Button>
@@ -114,4 +171,4 @@ class Feedback extends Component{
     }
 }
 
-export default withStyles(styles, {withTheme: true})(Feedback)
+export default withStyles(styles, {withTheme: true})(withRouter(Feedback))
