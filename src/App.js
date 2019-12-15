@@ -22,7 +22,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      signedUser: 'omar@kfupm.com',
+      signedUser: 'omar@omar.com',
+      type: 'user',
       events: [],
       users: this.getUsers()
     }
@@ -46,17 +47,24 @@ class App extends Component {
   getUsers() {
     return userList
   }
+  setUser(user, type){
+    debugger
+    this.setState({
+      signedUser: user,
+      type: type
+    })
+  }
 
   render() {
     return (
       <Router>
-        <Header signed='no'/>
+        <Header signed={this.state.type}/>
         <Switch>
           <Route path='/swe363-project-react' exact >
             <Home events={this.state.events} />
           </Route>
           <Route path='/swe363-project-react/signin' exact>
-            <SignIn/>
+            <SignIn handler={this.setUser}/>
           </Route>
           <Route path='/swe363-project-react/signup' exact component={SignUp} />
           <Route path='/swe363-project-react/history' exact >
@@ -93,7 +101,9 @@ class App extends Component {
           <Route path='/swe363-project-react/edit-event' exact>
             <NewEvent mode='edit' />
           </Route>
-          <Route path='/swe363-project-react/profile' exact component={Profile} /> 
+          <Route path='/swe363-project-react/profile' exact>
+            <Profile user={this.state.signedUser} /> 
+          </Route> 
           <Route path='/swe363-project-react/users' exact component={Users} /> 
           <Route path='/swe363-project-react/reset-password' exact component={Forgot} /> 
           <Route path='/swe363-project-react/reports' exact>

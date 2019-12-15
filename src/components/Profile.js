@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import { Link } from 'react-router-dom'
 
+import firebase from '../firebase'
+
 const styles = theme => ({
     root: {
         display: 'flex',
@@ -30,17 +32,50 @@ const styles = theme => ({
 class Profile extends Component {
     constructor(props) {
         super(props)
+        this.user = props.user
         this.state = {
-            firstName: 'Omar',
-            lastName: 'Alghamdi',
-            email: 'omar@kfupm.com',
-            password: 'omar123',
-            showPassword: false
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            showPassword: false,
+            id: ''
         }
+        this.getUser(this.user)
         this.handleChange = this.handleChange.bind(this)
         this.handleClickShowPassword = this.handleClickShowPassword.bind(this)
         this.handleMouseDownPassword = this.handleMouseDownPassword.bind(this)
+        this.handleSave= this.handleSave.bind(this)
     }
+
+    getUser(user){
+        firebase.firestore().collection('users')
+        .where('email', '==', user)
+        .get()
+        .then(query => {
+            query.forEach(doc => {
+                this.setState({
+                    firstName: doc.data().firstName,
+                    lastName: doc.data().lastName,
+                    email: doc.data().email,
+                    password: doc.data().password,
+                    id: doc.id
+                })
+            })
+        })
+    }
+
+    handleSave(e){
+        firebase.firestore().collection('users').doc(this.state.id)
+        .update({
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            password: this.state.password,
+                    
+        })
+    }
+
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
@@ -123,6 +158,7 @@ class Profile extends Component {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            onClick={this.handleSave}
                         >
                             Save Changes
           </Button>
