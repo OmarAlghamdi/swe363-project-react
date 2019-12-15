@@ -3,6 +3,8 @@ import { Card, CardActionArea, CardActions, CardMedia, CardContent, Typography, 
 import { Link } from 'react-router-dom'
 import football from '../assets/football.jfif'
 
+import firebase from '../firebase'
+
 class Event extends Component {
     constructor(props) {
         super()
@@ -13,8 +15,18 @@ class Event extends Component {
         this.owner = props.owner
         this.startDate = props.startDate
         this.startTime = props.startTime
-
+        this.data = props.data
+        console.log(this.data)
+        this.handleDelete = this.handleDelete.bind(this)
     }
+
+    
+
+    handleDelete(){
+        firebase.firestore().collection('events').doc(this.data.id)
+        .delete()
+    }
+
     getControl(source, owner) {
 
         if (source === 'home') {
@@ -27,7 +39,8 @@ class Event extends Component {
         else if (source === 'history' && owner !== 'true') {
             return (
                 <Fragment>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary"
+                        onClick={this.handleDelete}>
                         Cancel
                     </Button>
                     <Link to='/swe363-project-react/feedback' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
@@ -41,17 +54,18 @@ class Event extends Component {
         else if (source === 'history' && owner === 'true') {
             return (
                 <Fragment>
-                    <Link to='/swe363-project-react/accept' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
+                    {/* <Link to='/swe363-project-react/accept' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
                         <Button size="small" color="primary">
                             Accept/Reject
                         </Button>
-                    </Link>
-                    <Link to='/swe363-project-react/edit-event' style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
+                    </Link> */}
+                    <Link to={`/swe363-project-react/edit-event/?id=${this.data.id}`} params={{id: this.data.id}} style={{fontFamily: 'inherit', textDecoration: 'inherit'}}>
                     <Button size="small" color="primary">
                         Edit
                     </Button>
                     </Link>
-                    <Button size="small" color="secondary">
+                    <Button size="small" color="secondary"
+                        onClick={this.handleDelete}>
                         Delete
                     </Button>
                 </Fragment>

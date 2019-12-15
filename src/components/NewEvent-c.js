@@ -13,7 +13,9 @@ import {
 } from '@material-ui/pickers'
 import 'date-fns'
 import DateFnsUtils from '@date-io/date-fns'
-import { Link } from 'react-router-dom'
+import { Link, Redirect, withRouter } from 'react-router-dom'
+
+import firebase from '../firebase'
 
 const styles = theme => ({
     '@global': {
@@ -44,11 +46,19 @@ class NewEvent extends Component{
         this.state = {
             name: '',
             desc: '',
-            date: new Date()
+            startDate: new Date(),
+            endtDate: new Date(), 
+            updated: false
         }
+        this.id = props.location.search.substring(4)
+        console.log(this.id)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        this.handleDateChange = this.handleDateChange.bind(this)
+        this.handleStartDateChange = this.handleStartDateChange.bind(this)
+        this.handleEndDateChange = this.handleEndDateChange.bind(this)
+        this.handleSave = this.handleSave.bind(this)
+        this.date2date = this.date2date.bind(this)
+        this.date2time = this.date2time.bind(this)
     }
     handleSubmit(e) {
         e.preventDefault()
@@ -58,9 +68,42 @@ class NewEvent extends Component{
             [e.target.name]: e.target.value
         })
     }
-    handleDateChange(newDate) {
+    handleStartDateChange(newDate) {
         this.setState({
-            date: newDate
+            startDate: newDate
+        })
+    }
+    handleEndDateChange(newDate) {
+        this.setState({
+            endDate: newDate
+        })
+    }
+    date2date(date){
+        const year = date.getFullYear()
+        const month = date.getMonth()+1
+        const day = date.getDate()
+        return `${year}-${month}-${day}`
+    }
+    date2time(date){
+        const hour = date.getHours()
+        const minute = date.getMinutes()
+        return `${hour}-${minute}-00`
+    }
+    handleSave(e){
+        e.preventDefault()
+        console.log(this.state.startDate)
+        
+        firebase.firestore().collection('events').doc(this.id)
+        .update({
+            name: this.state.name,
+            desc: this.state.desc,
+            startDate: this.date2date(this.state.startDate),
+            endDate: this.date2date(this.state.endDate),
+            startTime: this.date2time(this.state.startDate), 
+            endTime: this.date2time(this.state.endDate)
+        })
+        this.setState({
+            updated: true
         })
     }
     getMode() {
@@ -73,10 +116,15 @@ class NewEvent extends Component{
     }
     componentDidMount() {
         if (this.mode === 'edit') {
-            this.setState({
-                name: 'football',
-                desc: 'footbal in field 5'
+            firebase.firestore().collection('events').doc(this.id)
+            .get()
+            .then(doc =>{
+                this.setState({
+                    name: doc.data().name,
+                    desc: doc.data().desc
+                })
             })
+            
         }
     }
     getControl(classes) {
@@ -84,16 +132,17 @@ class NewEvent extends Component{
             return (
                 <Fragment>
                     <Grid item xs={12} sm={6}>
-                    <Link to='/swe363-project-react/history' style={{ color: 'inherit', textDecoration: 'none', width: '40%' }}>
+                    {/* <Link to='/swe363-project-react/history' style={{ color: 'inherit', textDecoration: 'none', width: '40%' }}> */}
                             <Button
                                 type="submit"
                                 variant="contained"
                                 color="primary"
                                 className={classes.button}
+                                onClick={this.handleSave}
                             >
                                 Save
                             </Button>
-                            </Link>
+                            {/* </Link> */}
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Link to='/swe363-project-react/history' style={{ color: 'inherit', textDecoration: 'none', width: '40%' }}>
@@ -140,6 +189,10 @@ class NewEvent extends Component{
         }
     }
     render() {
+        if (this.state.updated){
+            return <Redirect to='/swe363-project-react/events' />
+        }
+
         const { classes } = this.props
         return (
             <Container component="main" maxWidth="xs">
@@ -181,8 +234,8 @@ class NewEvent extends Component{
                                 id="start-date"
                                 label="Starting Date"
                                 format="dd/MM/yyyy"
-                                value={this.state.date}
-                                onChange={this.handleDateChange}
+                                value={this.state.startDate}
+                                onChange={this.handleStartDateChange}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
@@ -192,8 +245,8 @@ class NewEvent extends Component{
                                 margin="normal"
                                 id="start-time"
                                 label="Starting Time"
-                                value={this.state.date}
-                                onChange={this.handleDateChange}
+                                value={this.state.startDate}
+                                onChange={this.handleStartDateChange}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change time',
                                 }}
@@ -204,8 +257,8 @@ class NewEvent extends Component{
                                 id="end-date"
                                 label="Ending Date"
                                 format="dd/MM/yyyy"
-                                value={this.state.date}
-                                onChange={this.handleDateChange}
+                                value={this.state.endDate}
+                                onChange={this.handleEndDateChange}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change date',
                                 }}
@@ -215,8 +268,8 @@ class NewEvent extends Component{
                                 margin="normal"
                                 id="end-time"
                                 label="Ending Time"
-                                value={this.state.date}
-                                onChange={this.handleDateChange}
+                                value={this.state.endDate}
+                                onChange={this.handleEndDateChange}
                                 KeyboardButtonProps={{
                                     'aria-label': 'change time',
                                 }}
@@ -240,4 +293,4 @@ class NewEvent extends Component{
 
 }
 
-export default withStyles(styles, {withTheme: true})(NewEvent)
+export default withStyles(styles, {withTheme: true})(withRouter(NewEvent))

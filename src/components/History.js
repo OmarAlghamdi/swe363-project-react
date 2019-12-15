@@ -31,13 +31,14 @@ class History extends Component{
                     {this.events.filter(event => (
                     event.creator === this.user || this.admin
                 )).map(event => (
-                        <Grid item xs={12} md={6} lg={3}>
+                        <Grid item xs={12} md={6} lg={3} key={event.id}>
                             <Event source='history'
                                 name={event.name}
                                 desc={event.desc}
                             owner='true'
                             startDate={event.startDate}
                             startTime={event.startTime}
+                            data={event}
                             />
                         </Grid>
                 ))}
