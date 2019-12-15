@@ -22,11 +22,12 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      signedUser: 'omar@omar.com',
-      type: 'admin',
+      signedUser: '',
+      type: '',
       events: [],
       users: []
     }
+    this.setUser = this.setUser.bind(this)
     this.getEvents()
     this.getUsers()
   }
@@ -57,7 +58,8 @@ class App extends Component {
     })
   }
   setUser(user, type){
-    debugger
+    console.log(user)
+    console.log(type)
     this.setState({
       signedUser: user,
       type: type
@@ -87,6 +89,7 @@ class App extends Component {
               events={this.state.events}
               admin={true}
             />
+            
           </Route>
           <Route path='/swe363-project-react/accept' exact >
             <Accept event={
