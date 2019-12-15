@@ -3,13 +3,35 @@ import Search from './Search'
 import Event from './Event'
 import { Grid, Typography } from '@material-ui/core'
 
+import firebase from '../firebase'
+
 class History extends Component{
     constructor(props) {
         super(props)
         this.events = props.events
         this.user = props.user
         this.admin = props.admin
+        this.state = {
+            user: ''
+        }
+        this.registerRealtimeAuthListener()
     }
+
+    registerRealtimeAuthListener(){
+        firebase.auth().onAuthStateChanged(user => {
+
+            if (user) {
+                this.setState({
+                    user: user.email
+                })
+            } else {
+                this.setState({
+                    user: ''
+                })
+            }
+        })
+    }
+    
     getStatus() {
         return 'waiting'
     }
@@ -57,7 +79,7 @@ class History extends Component{
                         </Grid>
                         <Grid container spacing={1}>
                     {this.events.filter(event => (
-                    event.creator !== 'omar@kfupm.com'
+                    event.creator === this.state.user
                 )).map(event => (
                         <Grid item xs={12} md={6} lg={3}>
                             <Event source='history'
