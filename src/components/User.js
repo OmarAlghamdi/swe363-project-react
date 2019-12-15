@@ -1,31 +1,55 @@
 import React, { Component, Fragment } from 'react'
 import { Card, CardActionArea, CardActions, CardContent, Typography, Button } from '@material-ui/core'
 
+import firebase from '../firebase'
+
 class User extends Component {
     constructor(props) {
         super()
-        this.activated = props.activated
+        this.state = {
+            ...props.data
+        }
+        console.log(this.state)
+        this.handleAccept = this.handleAccept.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
-    getControl(activated) {
-        if (activated === 'false') {
+    handleAccept(){
+        firebase.firestore().collection('users').doc(this.state.id)
+        .update({
+            state: 'accepted'
+        })
+        this.setState({
+            state: 'accepted'
+        })
+    }
+    handleDelete(){
+        firebase.firestore().collection('users').doc(this.state.id)
+        .delete()
+    }
+    
+    getControl(state) {
+        if (state === 'waiting') {
             return (
                 <Fragment>
-                    <Button size='small' color='primary'>
+                    <Button size='small' color='primary'
+                        onClick={this.handleAccept}>
                         Accept
                 </Button>
-                    <Button size='small' color='secondary'>
+                    <Button size='small' color='secondary'
+                        onClick={this.handleDelete}>
                         Reject
                 </Button>
                 </Fragment>
             )
         }
-        else if (activated === 'true') {
+        else if (state === 'accepted') {
             return (
                 <Fragment>
                     <Button size='small' color='secondary'>
                         Block
                 </Button>
-                    <Button size='small' color='secondary'>
+                    <Button size='small' color='secondary'
+                        onClick={this.handleDelete}>
                         Delete
                 </Button>
                 </Fragment>
@@ -39,15 +63,15 @@ class User extends Component {
                 <CardActionArea>
                     <CardContent>
                         <Typography variant="h6" component="h6">
-                            User Name
+                            {`${this.state.firstName} ${this.state.lastName}`}
               </Typography>
                         <Typography variant="h6" color="textSecondary" component="h6">
-                            User Email
+                            {this.state.email}
               </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    {this.getControl(this.activated)}
+                    {this.getControl(this.state.state)}
                 </CardActions>
             </Card>
         )
